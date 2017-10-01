@@ -14,12 +14,16 @@ class GeocoderRequestHandler(BaseHTTPRequestHandler):
             address = self.getParameter("address", parameters)
 
             if address:
-                self.send_response(200, 'OK')
-                self.send_header('Content-type', 'application/json')
-                self.end_headers()
-
                 result = GeocoderService().geocode(address)
-                self.wfile.write(bytes(result, 'UTF-8'))
+
+                if(result):
+                    self.send_response(200, 'OK')
+                    self.send_header('Content-type', 'application/json')
+                    self.end_headers()
+                    self.wfile.write(bytes(result, 'UTF-8'))
+                else :
+                    self.send_error(404)
+                    self.end_headers()
             else :
                 self.send_error(400)
                 self.end_headers()

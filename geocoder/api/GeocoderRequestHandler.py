@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import urlparse, parse_qs
+
 from geocoder.services.GeocoderService import GeocoderService
 
 class GeocoderRequestHandler(BaseHTTPRequestHandler):
@@ -8,7 +9,7 @@ class GeocoderRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         url = urlparse(self.path)
 
-        """Very basic routing"""
+        """Basic routing"""
         if url.path == "/geocode":
             parameters = parse_qs(url.query)
             address = self.getParameter("address", parameters)

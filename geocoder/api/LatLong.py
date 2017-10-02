@@ -1,5 +1,5 @@
 
 class LatLong:
-    def __init__(self, lat, long):
+    def __init__(self, lat, lng):
         self.lat = lat
-        self.long = long
+        self.lng = lng

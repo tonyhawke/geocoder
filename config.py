@@ -11,12 +11,12 @@ geocoder = {
 
 provider = {
     "googlemaps" : {
-        "key":"***",
+        "key":"*",
         "url":"https://maps.googleapis.com/maps/api/geocode/json?"
     },
     "here" : {
-        "appId":"***",
-        "appCode":"***",
-        "url":"httttps://geocoder.cit.api.here.com/6.2/geocode.json?"
+        "appId":"*",
+        "appCode":"*",
+        "url":"https://geocoder.cit.api.here.com/6.2/geocode.json?"
     }
 }

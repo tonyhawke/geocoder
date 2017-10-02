@@ -17,6 +17,7 @@ class GeocoderService:
         self.primaryGeocoder = self.provider(primaryName)
         self.secondaryGeocoder = self.provider(secondaryName)
 
+
     def provider(self, name):
         if name == 'googlemaps':
             return GoogleMapsGeocoder()
@@ -35,12 +36,12 @@ class GeocoderService:
         result = self._doGeocoding(address, self.primaryGeocoder)
 
         if(result):
-            return json.dumps({'lat':result.lat,'long':result.long})
+            return json.dumps({'lat':result.lat,'lng':result.lng})
         else:
-            print("Primary failed, falling back to secondary geocoder")
+            print("Primary failed or no result, falling back to secondary geocoder")
             result = self._doGeocoding(address, self.secondaryGeocoder)
             if(result):
-                return json.dumps({'lat':result.lat,'long':result.long})
+                return json.dumps({'lat':result.lat,'lng':result.lng})
             else:
                 return None
 
@@ -58,7 +59,7 @@ class GeocoderService:
         try:
             response = urllib.request.urlopen(req)
 
-            print("Gecode returned code: "+str(response.status))
+            print("Geocode returned code: "+str(response.status))
 
             if(response.status == 200):
                 json_string = response.read().decode('utf-8')
@@ -67,7 +68,7 @@ class GeocoderService:
                 return provider.processResponse(json_obj)
 
         except urllib.error.HTTPError as e:
-            print("ERROR: HTTPError, status codes: "+e.code+", reason: ''"+e.reason+"'")
+            print("ERROR: HTTPError, status codes: "+str(e.code)+", reason: ''"+e.reason+"'")
         except urllib.error.URLError as e1:
             print("ERROR: URLError, reason: '"+e1.reason+"'")
 

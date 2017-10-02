@@ -16,12 +16,12 @@
 
 ## How to Run the Service
 
-The Geocoder service required Python 3.6+ with SSL certs installed (see 'notes' [here](https://www.python.org/downloads/release/python-360/))
+The Geocoder service requires Python 3.6+ with SSL certs installed (see 'notes' [here](https://www.python.org/downloads/release/python-360/))
 
 - Download or Clone this repo
 - Open config.py in an editor and update:
   - Server name and port (or leave defaults)
-  - Add provider keys to GoogleMaps and HERE
+  - Add provider keys/codes for GoogleMaps and HERE
 - Open a terminal and run: 'python geocoder.py' (or 'python3 geocoder.py')
 - If you see 'Geocoder Server starting, name=localhost, port=8000' the service is now running successfully.
 - To stop the service, simply terminate the process (cmd+c)
